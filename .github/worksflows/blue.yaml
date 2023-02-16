@@ -1,0 +1,17 @@
+name: shared-workflow-blue
+on:
+  workflow_call:
+    inputs:
+      print-colours:
+        required: false
+        type: boolean
+job:
+  workflow_call_actions:
+    name: Print repository colours
+    runs-on: ubuntu:latest
+    if: ${{ inputs.print-colours }}
+    steps:
+      - name: Calling from red
+        run: echo "Workflow call invoked from shared-red repository"
+      - name: Not calling from red
+        run: echo "Workflow call not invoked from shared-red repository"
