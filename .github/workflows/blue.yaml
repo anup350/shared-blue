@@ -2,16 +2,27 @@ name: shared-workflow-blue
 on:
   workflow_call:
     inputs:
-      print-colours:
+      enable-code-scans:
         required: false
         type: boolean
-job:
-  workflow_call_actions:
-    name: Print repository colours
-    runs-on: ubuntu:latest
-    if: ${{ inputs.print-colours }}
+      secrets:
+        ghcr-token:
+          required: true
+          description: Github token allowing access to the libraries and ghcr.
+jobs:
+  sample-action:
+    name: Sample action
+    runs-on: ubuntu-20.04
+    if: ${{ inputs.enable-code-scans }}
     steps:
-      - name: Calling from red
-        run: echo "Workflow call invoked from shared-red repository"
-      - name: Not calling from red
-        run: echo "Workflow call not invoked from shared-red repository"
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+      - name: Run sample action
+        with:
+          ghcr-token: ${{ secrets.ghcr-token }}
+        run: |
+          echo "Running sample action"
+          echo "ghcr-token: ${{ secrets.ghcr-token }}"
+          echo "enable-code-scans: ${{ inputs.enable-code-scans }}"
