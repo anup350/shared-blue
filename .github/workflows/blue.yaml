@@ -6,7 +6,7 @@ on:
         required: false
         type: boolean
       secrets:
-        ghcr-token:
+        ghcr_token:
           required: true
           description: Github token allowing access to the libraries and ghcr.
 jobs:
@@ -21,8 +21,8 @@ jobs:
           fetch-depth: '0'
       - name: Run sample action
         with:
-          ghcr-token: ${{ secrets.ghcr-token }}
+          ghcr_token: ${{ secrets.ghcr_token }}
         run: |
           echo "Running sample action"
-          echo "ghcr-token: ${{ secrets.ghcr-token }}"
+          echo "ghcr-token: ${{ secrets.ghcr_token }}"
           echo "enable-code-scans: ${{ inputs.enable-code-scans }}"
