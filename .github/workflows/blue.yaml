@@ -1,28 +1,28 @@
-name: shared-workflow-blue
-on:
-  workflow_call:
-    inputs:
-      enable-code-scans:
-        required: false
-        type: boolean
-      secrets:
-        ghcr_token:
-          required: true
-          description: Github token allowing access to the libraries and ghcr.
-jobs:
-  sample-action:
-    name: Sample action
-    runs-on: ubuntu-20.04
-    if: ${{ inputs.enable-code-scans }}
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: '0'
-      - name: Run sample action
-        with:
-          ghcr_token: ${{ secrets.ghcr_token }}
-        run: |
-          echo "Running sample action"
-          echo "ghcr-token: ${{ secrets.ghcr_token }}"
-          echo "enable-code-scans: ${{ inputs.enable-code-scans }}"
+# name: shared-workflow-blue
+# on:
+#   workflow_call:
+#     inputs:
+#       enable-code-scans:
+#         required: false
+#         type: boolean
+#       secrets:
+#         ghcr_token:
+#           required: true
+#           description: Github token allowing access to the libraries and ghcr.
+# jobs:
+#   sample-action:
+#     name: Sample action
+#     runs-on: ubuntu-20.04
+#     if: ${{ inputs.enable-code-scans }}
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v3
+#         with:
+#           fetch-depth: '0'
+#       - name: Run sample action
+#         with:
+#           ghcr_token: ${{ secrets.ghcr_token }}
+#         run: |
+#           echo "Running sample action"
+#           echo "ghcr-token: ${{ secrets.ghcr_token }}"
+#           echo "enable-code-scans: ${{ inputs.enable-code-scans }}"

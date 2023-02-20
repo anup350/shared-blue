@@ -1,0 +1,16 @@
+name: Blue dev
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        description: environment to deploy to
+        required: true
+jobs:
+  print_blue:
+    name: Print from blue
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }
+    steps:
+      - name: Display colour
+        run: echo "Printing in blue repo"
