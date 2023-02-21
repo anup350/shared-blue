@@ -24,4 +24,4 @@ jobs:
         with:
           token: ${{ secrets.API_TOKEN_GITHUB }}
           repository: ${{ matrix.repo }}
-          event-type: Blue-Trigger
+          event-type: blue
