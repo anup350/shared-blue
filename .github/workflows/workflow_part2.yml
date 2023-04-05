@@ -13,5 +13,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+      - run: git branch
       - name: Run python script
         run: python3 hello2.py
