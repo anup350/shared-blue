@@ -1,9 +1,8 @@
 name: Layer2-Workflow
 on:
   workflow_run:
-    workflows: [Base-Workflow]
-    types:
-      - completed
+    workflows: ["Base-Workflow"]
+    types: [completed]
     branches:
       - "feature/distributed-workflows"
 jobs:
