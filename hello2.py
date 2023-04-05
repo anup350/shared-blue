@@ -1,0 +1,1 @@
+print("Hello! Base workflow completed successfully. Hence, this script is running on layer2 workflow.")

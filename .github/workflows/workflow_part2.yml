@@ -1,0 +1,14 @@
+name: Layer2-Workflow
+on:
+  workflow_run:
+    workflows: [Base-Workflow]
+    types:
+      - completed
+jobs:
+  layer2-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Run python script
+        run: python3 hello2.py
